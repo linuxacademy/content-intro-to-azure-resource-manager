@@ -5,14 +5,14 @@ If you have MFA enabled you will need to include "-TenantId <tenant id>" #>
 Connect-AzAccount 
 
 <# If you have multiple subscriptions you will need to run
-Set-AzContext <SubscriptionName> #>
+Set-AzContext <subscription name> #>
 
 # Create a new Resource Group #
-New-AzResourceGroup  -Name psarmrg  -Location <location>
+New-AzResourceGroup  -Name <resource group name>  -Location <location>
  
 <# Deploy file
 If you are deploying from a web accessible file use "-TemplateUri <uri of file>" #>
-New-AzResourceGroupDeployment  -Name psblanktemplate  -ResourceGroupName psarmrg  -TemplateFile "<file location>"
+New-AzResourceGroupDeployment  -Name <name of deployment>  -ResourceGroupName <resource group name>  -TemplateFile "<file location>"
  
 # CLI #
 
@@ -21,11 +21,11 @@ If you have MFA enabled you will need to include "--tenant <tenant id>" #>
 az login
 
 <# If you have multiple subscriptions you will need to run
-az account set --subscription <SubscriptionName> #>
+az account set --subscription <subscription name> #>
 
 # Create a new Resource Group #
-az group create --name cliarmrg --location <location>
+az group create --name <resource group name> --location <location>
 
 <# Deploy file
 If you are deploying from a web accessible file use "--template-uri" #>
-az deployment group create --name cliblanktemplate --resource-group cliarmrg --template-file "<file location>"
+az deployment group create --name <name of deployment> --resource-group <resource group name> --template-file "<file location>"
