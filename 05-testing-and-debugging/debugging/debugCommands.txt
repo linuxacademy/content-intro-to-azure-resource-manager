@@ -1,0 +1,22 @@
+// PowerShell
+
+// Validate file
+Test-AzResourceGroupDeployment -ResourceGroupName <resource group name> -TemplateFile <file name>
+
+// View the deployment operations for deployment
+Get-AzResourceGroupDeploymentOperation -DeploymentName <deployment name> -ResourceGroupName <resource group name>
+
+// Filter to failed operations
+Get-AzResourceGroupDeploymentOperation -ResourceGroupName <resource group name> -Name <deployment name> | Where-Object { $_.ProvisioningState -eq "Failed" }
+
+
+// CLI
+
+// Validate file
+az deployment group validate --resource-group <resource group name> --template-file <file name>
+
+// View the deployment operations for deployment
+az deployment operation group list --name <deployment name> --resource-group <resource group name>
+
+// Filter to failed operations
+az deployment operation group list --resource-group <resource group name> --name <deployment name> --query "[?properties.provisioningState=='Failed'].properties.statusMessage.error"
