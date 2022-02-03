@@ -1,0 +1,16 @@
+# PowerShell #
+
+# Roll back to previous deployment on error #
+New-AzResourceGroupDeployment -Name <deployment name> -ResourceGroupName <resource group name> -TemplateFile <file name> -RollbackToLastDeployment
+
+# Roll back to specific deployment on error #
+New-AzResourceGroupDeployment -Name <deployment name> -ResourceGroupName <resource group name> -TemplateFile <file name> -RollBackDeploymentName <previous deployment name>
+
+
+# CLI #
+
+# Roll back to previous deployment on error #
+az deployment group create  --name <deployment name> --resource-group <resource group name>  --template-file <file name> --rollback-on-error
+
+# Roll back to specific deployment on error #
+az deployment group create  --name <deployment name> --resource-group <resource group name>  --template-file <file name> --rollback-on-error <previous deployment name>
